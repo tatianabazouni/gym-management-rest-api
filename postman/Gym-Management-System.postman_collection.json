@@ -1,0 +1,144 @@
+{
+  "info": {
+    "name": "Gym Management System API",
+    "description": "Complete Postman collection for CSC456 Project 2 - Gym domain with MongoDB + SQLite persistence.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "trainerId", "value": "REPLACE_TRAINER_ID" },
+    { "key": "focusAreaId", "value": "REPLACE_FOCUS_AREA_ID" },
+    { "key": "workoutPlanId", "value": "REPLACE_WORKOUT_PLAN_ID" },
+    { "key": "feedbackId", "value": "1" }
+  ],
+  "item": [
+    {
+      "name": "Trainers",
+      "item": [
+        {
+          "name": "Create Trainer",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Sarah Lopez\",\n  \"email\": \"sarah.lopez@gym.com\",\n  \"specialty\": \"Strength Training\"\n}"
+            },
+            "url": "{{baseUrl}}/api/trainers"
+          }
+        },
+        { "name": "Get All Trainers", "request": { "method": "GET", "url": "{{baseUrl}}/api/trainers" } },
+        { "name": "Get Trainer By ID", "request": { "method": "GET", "url": "{{baseUrl}}/api/trainers/{{trainerId}}" } },
+        {
+          "name": "Update Trainer",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Sarah Lopez Updated\",\n  \"email\": \"sarah.updated@gym.com\",\n  \"specialty\": \"Functional Fitness\"\n}"
+            },
+            "url": "{{baseUrl}}/api/trainers/{{trainerId}}"
+          }
+        },
+        { "name": "Delete Trainer", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/trainers/{{trainerId}}" } }
+      ]
+    },
+    {
+      "name": "Focus Areas",
+      "item": [
+        {
+          "name": "Create Focus Area",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Cardio\",\n  \"description\": \"Exercises that improve heart and lung endurance.\"\n}"
+            },
+            "url": "{{baseUrl}}/api/focus-areas"
+          }
+        },
+        { "name": "Get All Focus Areas", "request": { "method": "GET", "url": "{{baseUrl}}/api/focus-areas" } },
+        { "name": "Get Focus Area By ID", "request": { "method": "GET", "url": "{{baseUrl}}/api/focus-areas/{{focusAreaId}}" } },
+        {
+          "name": "Update Focus Area",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Cardio Endurance\",\n  \"description\": \"Updated cardio conditioning focus area.\"\n}"
+            },
+            "url": "{{baseUrl}}/api/focus-areas/{{focusAreaId}}"
+          }
+        },
+        { "name": "Delete Focus Area", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/focus-areas/{{focusAreaId}}" } }
+      ]
+    },
+    {
+      "name": "Workout Plans",
+      "item": [
+        {
+          "name": "Create Workout Plan",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Full Body Starter\",\n  \"description\": \"Balanced weekly plan for new members.\",\n  \"difficultyLevel\": \"Beginner\",\n  \"trainer\": \"{{trainerId}}\",\n  \"focusAreas\": [\"{{focusAreaId}}\"]\n}"
+            },
+            "url": "{{baseUrl}}/api/workout-plans"
+          }
+        },
+        { "name": "Get All Workout Plans", "request": { "method": "GET", "url": "{{baseUrl}}/api/workout-plans" } },
+        { "name": "Get Workout Plan By ID", "request": { "method": "GET", "url": "{{baseUrl}}/api/workout-plans/{{workoutPlanId}}" } },
+        {
+          "name": "Update Workout Plan",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Full Body Starter Updated\",\n  \"description\": \"Updated plan for oral exam demonstration.\",\n  \"difficultyLevel\": \"Intermediate\",\n  \"trainer\": \"{{trainerId}}\",\n  \"focusAreas\": [\"{{focusAreaId}}\"]\n}"
+            },
+            "url": "{{baseUrl}}/api/workout-plans/{{workoutPlanId}}"
+          }
+        },
+        { "name": "Delete Workout Plan", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/workout-plans/{{workoutPlanId}}" } }
+      ]
+    },
+    {
+      "name": "Feedback (SQLite)",
+      "item": [
+        {
+          "name": "Create Feedback",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"Great gym API flow and clean routes.\",\n  \"rating\": 5\n}"
+            },
+            "url": "{{baseUrl}}/api/feedback"
+          }
+        },
+        { "name": "Get All Feedback", "request": { "method": "GET", "url": "{{baseUrl}}/api/feedback" } },
+        { "name": "Get Feedback By ID", "request": { "method": "GET", "url": "{{baseUrl}}/api/feedback/{{feedbackId}}" } },
+        {
+          "name": "Update Feedback",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"Updated gym feedback entry.\",\n  \"rating\": 4\n}"
+            },
+            "url": "{{baseUrl}}/api/feedback/{{feedbackId}}"
+          }
+        },
+        { "name": "Delete Feedback", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/feedback/{{feedbackId}}" } }
+      ]
+    }
+  ]
+}
